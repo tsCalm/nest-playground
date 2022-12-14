@@ -32,9 +32,6 @@ export class UsersController {
     const user = this.userService.getUserByUsername(username);
     if (!user)
       throw new HttpException('User not found', HttpStatus.BAD_REQUEST);
-    /**
-     *
-     */
     return new SerializedUser(user);
   }
 }
