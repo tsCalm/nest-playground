@@ -56,4 +56,12 @@ export class UsersService {
       },
     });
   }
+
+  findUserById(id: number) {
+    return this.userRepo.findOne({
+      where: {
+        id,
+      },
+    });
+  }
 }
