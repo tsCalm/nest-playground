@@ -39,4 +39,11 @@ export class UsersService {
     const newUser = this.userRepo.create(createUserDto);
     return this.userRepo.save(newUser);
   }
+  findUserByEmail(email: string) {
+    return this.userRepo.findOne({
+      where: {
+        email,
+      },
+    });
+  }
 }
