@@ -2,6 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import * as session from 'express-session';
 import * as passport from 'passport';
+import * as os from 'os';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -17,6 +18,7 @@ async function bootstrap() {
       },
     }),
   );
+  app.enableCors();
   app.use(passport.initialize());
   app.use(passport.session());
   /**
@@ -25,6 +27,8 @@ async function bootstrap() {
    * app.use(미들웨어명)
    */
 
-  await app.listen(3000);
+  await app.listen(3000).then(() => {
+    os.cpus();
+  });
 }
 bootstrap();

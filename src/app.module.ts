@@ -5,6 +5,7 @@ import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import entities from './typeorm';
 import { PassportModule } from '@nestjs/passport';
+import { FileSyncModule } from './file-sync/file-sync.module';
 
 @Module({
   imports: [
@@ -12,18 +13,19 @@ import { PassportModule } from '@nestjs/passport';
     UsersModule,
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'localhost',
+      host: '127.0.0.1',
       port: 3306,
       username: 'root',
       password: '',
       database: 'nest_playground',
       entities: entities,
-      synchronize: true,
+      synchronize: false,
     }),
     AuthModule,
     PassportModule.register({
       session: true,
     }),
+    FileSyncModule,
   ],
   controllers: [],
   providers: [],
